@@ -1,6 +1,10 @@
-# TOTEM split keyboard
+# TOTEM by Geist.
 
-![totem](https://imgur.com/a/9GmHxAt)
+<picture align="center">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/GEIGEIGEIST/TOTEM/refs/heads/main/docs/images/TOTEM_logo_dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/GEIGEIGEIST/TOTEM/refs/heads/main/docs/images/TOTEM_logo_bright.svg">
+  <img alt="TOTEM logo" src="/docs/images/TOTEM_logo_dark.svg">
+</picture>
 
 TOTEM is 38 keys column-staggered split keyboard made by @geigeigeist. 
 It uses the Seeed XIAO RP2040.
