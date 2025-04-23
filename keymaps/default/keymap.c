@@ -13,6 +13,7 @@ SPDX-License-Identifier: GPL-2.0-or-later
 ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 */
 
+#include "keycodes.h"
 #include "quantum.h"
 #include QMK_KEYBOARD_H
 
@@ -47,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 ├─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┤
                 │  WIN(A) │  ALT(S) │ CTRL(D) │ SHIFT(F)│    G    ││    H    │ SHIFT(J)│ CTRL(S) │  ALT(A) │ WIN(;|:)│
       ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
-      │   [|}   │    Z    │    X    │    C    │    V    │    B    ││    N    │    M    │   ,|<   │   .|>   │   /|?   │   ]|}   │
+      │   [|{   │    Z    │    X    │    C    │    V    │    B    ││    N    │    M    │   ,|<   │   .|>   │   /|?   │   ]|}   │
       └─────────┴─────────┴─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
                                     │   TAB   │NUMS(ESC)│  ENTER  ││  SPACE  │BACKSPACE│   DEL   │
                                     └─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┘*/
@@ -67,18 +68,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 ┌─────────┬─────────┬─────────┬─────────┬──────╨──┐┌──╨──────┬─────────┬─────────┬─────────┬─────────┐
         ╌┄┈┈───═╡   1|!   │   2|@   │   3|#   │   4|$   │   5|%   ││   6|^   │   7|&   │   8|*   │   9|(   │   0|)   │ 
                 ├─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┤
-                │   -|_   │   HOME  │  PGUP   │   PGDN  │   END   ││   LEFT  │   DOWN  │    UP   │  RIGHT  │   =|+   │
+                │   WIN   │   ALT   │   CTRL  │  SHIFT  │         ││   LEFT  │   DOWN  │    UP   │  RIGHT  │   =|+   │
       ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
-      │         │         │         │         │         │  SHIFT  ││  SHIFT  │   [|{   │   ]|}   │   `|~   │   '|"   │   \||   │
+      │         │         │  HOME   │  PGUP   │   PGDN  │   END   ││   -|_   │   [|{   │   ]|}   │   `|~   │   '|"   │   \||   │
       └─────────┴─────────┴─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
-                                    │         │    ▼    │         ││ CAPSWORD│   UTIL  │         │
+                                    │         │    ▼    │         ││  SHIFT  │UTIL(BSP)│CAPS WORD│
                                     └─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┘ */
 
     [_SYMB] = LAYOUT(
                 KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0,
-                KC_MINS, KC_HOME, KC_PGUP, KC_PGDN, KC_END, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_EQL,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LSFT, KC_RSFT, KC_LBRC, KC_RBRC, KC_GRV, KC_QUOT, KC_BSLS,
-                                    XXXXXXX, _______, XXXXXXX, CW_TOGG, MO(_UTIL), XXXXXXX),
+                KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_EQL,
+        XXXXXXX, XXXXXXX, KC_HOME, KC_PGUP, KC_PGDN, KC_END, KC_MINS, KC_LBRC, KC_RBRC, KC_GRV, KC_QUOT, KC_BSLS,
+                                    XXXXXXX, _______, XXXXXXX, KC_RSFT, LT(_UTIL, KC_BSPC), CW_TOGG),
     /*
       ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
 
@@ -115,11 +116,13 @@ bool process_detected_host_os_kb(os_variant_t detected_os) {
         case OS_MACOS:
         case OS_IOS:
             keymap_config.swap_lctl_lgui = true;
+            keymap_config.swap_rctl_rgui = true;
             break;
         case OS_WINDOWS:
         case OS_LINUX:
         case OS_UNSURE:
             keymap_config.swap_lctl_lgui = false;
+            keymap_config.swap_rctl_rgui = false;
     }
 
     eeconfig_update_keymap(keymap_config.raw);
