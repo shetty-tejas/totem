@@ -15,6 +15,7 @@ SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "keycodes.h"
 #include "quantum.h"
+#include "quantum_keycodes.h"
 #include QMK_KEYBOARD_H
 
 // ┌─────────────────────────────────────────────────┐
@@ -72,14 +73,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
       │         │         │  HOME   │  PGUP   │   PGDN  │   END   ││   -|_   │   [|{   │   ]|}   │   `|~   │   '|"   │   \||   │
       └─────────┴─────────┴─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
-                                    │         │    ▼    │         ││  SHIFT  │UTIL(BSP)│CAPS WORD│
+                                    │         │    ▼    │         ││SHIFT(SP)│UTIL(BSP)│CAPS WORD│
                                     └─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┘ */
 
     [_SYMB] = LAYOUT(
                 KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0,
                 KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_EQL,
         XXXXXXX, XXXXXXX, KC_HOME, KC_PGUP, KC_PGDN, KC_END, KC_MINS, KC_LBRC, KC_RBRC, KC_GRV, KC_QUOT, KC_BSLS,
-                                    XXXXXXX, _______, XXXXXXX, KC_RSFT, LT(_UTIL, KC_BSPC), CW_TOGG),
+                                    XXXXXXX, _______, XXXXXXX, RSFT_T(KC_SPACE), LT(_UTIL, KC_BSPC), CW_TOGG),
     /*
       ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
 
